@@ -19,6 +19,7 @@
                 <div for="text" class="ui pointing below label">Was gibbbt es zu tun?</div>
                 <div class="ui action input">
                     <input autofocus name="text" type="text" name="text" placeholder="Fürs Modul lernen...">
+                    <input type="date" name="date"/>
                     <button class="ui blue button" type="submit">Hinzufügen</button>
                 </div>
             </div>
@@ -28,6 +29,7 @@
         {% for item in items %}
         <div class="ui segment" style="overflow:hidden; position: relative">
             <span class="ui header" style="margin-left: 0.5em;">{{item.text}}</span>
+            <span class="ui header" style="margin-left: 0.5em;">{{item.date}}</span>
             {% if item.isCompleted %}
             <a class="ui green left corner label" href="/update/{{loop.index0}}"><i
                     class="check square outline icon"></i></a>

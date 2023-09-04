@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+import datetime
 
 # Hier werden die Daten gespeichert
 items = []
@@ -7,12 +8,14 @@ items = []
 @dataclass
 class Todo:
     text: str
+    date: datetime
     isCompleted: bool = False
 
 # Ver-BBB-sierung
-def add(title):
+def add(title, date):
     title = title.replace('b', 'bbb').replace('B', 'Bbb')
-    items.append(Todo(title))
+    date = datetime.datetime.strptime(date, '%Y-%m-%d')
+    items.append(Todo(title, date))
 
 
 def get_all():
@@ -26,3 +29,6 @@ def get(index):
 
 def update(index):
     items[index].isCompleted = not items[index].isCompleted
+
+def delete():
+    items.clear()
