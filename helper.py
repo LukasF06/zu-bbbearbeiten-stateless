@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 import datetime
+import operator
 
 # Hier werden die Daten gespeichert
 items = []
@@ -14,8 +15,9 @@ class Todo:
 # Ver-BBB-sierung
 def add(title, date):
     title = title.replace('b', 'bbb').replace('B', 'Bbb')
-    date = datetime.datetime.strptime(date, '%Y-%m-%d')
+    date = datetime.datetime.strptime(date, '%Y-%m-%d') 
     items.append(Todo(title, date))
+    items.sort(key=operator.attrgetter("date"))
 
 
 def get_all():
